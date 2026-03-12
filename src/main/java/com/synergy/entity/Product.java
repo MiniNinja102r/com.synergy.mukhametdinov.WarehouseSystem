@@ -4,20 +4,18 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@EqualsAndHashCode
 @ToString
-@RequiredArgsConstructor
 @Getter
-public final class Product {
-    final int id;
+@EqualsAndHashCode(callSuper = false)
+public final class Product extends BaseEntity {
     final String name;
     final double price;
     final int quantity;
 
-    public Product(int id, String name, double price) {
-        this.id = id;
+    public Product(int id, String name, double price, int quantity) {
+        super(id);
         this.name = name;
         this.price = price;
-        this.quantity = 1;
+        this.quantity = quantity;
     }
 }
