@@ -1,16 +1,16 @@
 package com.synergy.controller;
 
-import com.synergy.repository.PostgreSQLProductRepository;
-import com.synergy.repository.ProductFactory;
-import com.synergy.repository.ProductRepository;
+import com.synergy.entity.ControllerType;
 
-public final class WebController {
+public final class WebController implements Controller {
 
-    public static void main(String[] args) {
-        final ProductRepository productRepository = new PostgreSQLProductRepository();
-
+    @Override
+    public void run() {
         System.out.println("Запущена веб-версия складского помещения");
+    }
 
-        productRepository.save(ProductFactory.createProduct(1, "Телевизор", 25_000));
+    @Override
+    public ControllerType type() {
+        return ControllerType.WEB;
     }
 }
